@@ -14,7 +14,7 @@
 
 @interface ViewController ()<TodoDelegate>
 @property MakeTodoViewController *makeTodoViewController;
-@property (nonatomic, strong) NSMutableArray* todos;
+@property (nonatomic, strong) NSMutableArray<Todo*>* todos;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 //@property (nonatomic, strong) UITableView *tableView;
 @end
@@ -42,6 +42,19 @@
     return [self.todos count];
 }
 
+- (IBAction)cellSwiped:(UISwipeGestureRecognizer *)sender {
+    NSLog(@"Swiped");
+    TodoTableViewCell *todoCell = (TodoTableViewCell*)sender.view;
+    NSIndexPath *path = [self.tableView indexPathForCell:todoCell];
+    NSInteger i = path.row;
+    self.todos[i].isCompleted = YES;
+    Todo *doneTodo = self.todos[i];
+    [self.todos removeObjectAtIndex:i];
+    [self.todos addObject:doneTodo];
+    [self.tableView reloadData];
+    
+    
+}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -50,6 +63,15 @@
     cell.titleLabel.text = todo.title;
     cell.todoDesctriptionlabel.text = todo.todoDescription;
     cell.priorityNumberLabel.text = [NSString stringWithFormat:@"%ld", todo.priorityNumber];
+    if (todo.isCompleted == NO) {
+        cell.backgroundColor = [UIColor whiteColor];
+    } else if (todo.isCompleted == YES) {
+        cell.backgroundColor = [UIColor greenColor];
+    }
+    if (!cell.swipeRecognizer) {
+        UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(cellSwiped:)];
+        [cell addGestureRecognizer:swipeRecognizer];
+    }
     return cell;
 }
 
@@ -72,7 +94,8 @@
 }
 
 -(void)makeTodoViewController:(MakeTodoViewController *)viewController addTodo:(Todo *)todo {
-    [self.todos addObject:todo];
+//    [self.todos addObject:todo];
+    [self.todos insertObject:todo atIndex:0];
     NSLog(@"%@", self.todos);
     [self.tableView reloadData];
 }

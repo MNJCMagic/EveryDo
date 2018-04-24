@@ -21,6 +21,9 @@
     
 }
 
+- (IBAction)backPressed {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 @end

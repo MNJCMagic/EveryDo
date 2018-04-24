@@ -11,7 +11,7 @@
 @interface TodoTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priorityNumberLabel;
-
+@property (nonatomic) UISwipeGestureRecognizer *swipeRecognizer;
 @property (weak, nonatomic) IBOutlet UILabel *todoDesctriptionlabel;
 
 @end
