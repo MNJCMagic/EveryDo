@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "Todo.h"
 #import "TodoTableViewCell.h"
+#import "DetailViewController.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) NSArray* todos;
@@ -43,6 +44,20 @@
     cell.todoDesctriptionlabel.text = todo.todoDescription;
     cell.priorityNumberLabel.text = [NSString stringWithFormat:@"%ld", todo.priorityNumber];
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Todo *todo = self.todos[indexPath.row];
+    [self performSegueWithIdentifier:@"detailSegue" sender:todo];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    DetailViewController *detail = (DetailViewController*)segue.destinationViewController;
+    Todo *todo = (Todo*)sender;
+    detail.todo = todo;
+
+    
+    
 }
 
 

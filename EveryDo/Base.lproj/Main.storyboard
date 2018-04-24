@@ -74,10 +74,60 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <segue destination="bEZ-fK-dbq" kind="show" identifier="detailSegue" id="Upi-TE-xdU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="24.800000000000001" y="31.934032983508249"/>
+            <point key="canvasLocation" x="33" y="22"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="y3Y-cg-qDl">
+            <objects>
+                <viewController id="bEZ-fK-dbq" customClass="DetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MjQ-Ja-Z8J">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9B-9t-XzF">
+                                <rect key="frame" x="123" y="54" width="128" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="0Ez-1V-6bm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxG-dF-sc5">
+                                <rect key="frame" x="67" y="105" width="240" height="281"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="C7f-wT-mHL"/>
+                                    <constraint firstAttribute="height" constant="281" id="VNZ-VM-lK3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8Ja-N2-hnb" firstAttribute="trailing" secondItem="p9B-9t-XzF" secondAttribute="trailing" constant="124" id="Cg8-sk-RLc"/>
+                            <constraint firstItem="p9B-9t-XzF" firstAttribute="top" secondItem="8Ja-N2-hnb" secondAttribute="top" constant="34" id="F8p-g5-EHI"/>
+                            <constraint firstItem="p9B-9t-XzF" firstAttribute="leading" secondItem="8Ja-N2-hnb" secondAttribute="leading" constant="123" id="Gst-f1-Sy6"/>
+                            <constraint firstItem="dxG-dF-sc5" firstAttribute="centerX" secondItem="8Ja-N2-hnb" secondAttribute="centerX" id="XfS-uE-dnI"/>
+                            <constraint firstItem="dxG-dF-sc5" firstAttribute="top" secondItem="p9B-9t-XzF" secondAttribute="bottom" constant="30" id="fQO-WC-GdU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8Ja-N2-hnb"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="dxG-dF-sc5" id="oQH-nY-IH8"/>
+                        <outlet property="titleLabel" destination="p9B-9t-XzF" id="6YM-BK-V3z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SMX-Qg-qRq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="751.20000000000005" y="32.833583208395808"/>
         </scene>
     </scenes>
 </document>

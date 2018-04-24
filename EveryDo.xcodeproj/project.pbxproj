@@ -15,6 +15,7 @@
 		27332124208F71BE00A9D607 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27332123208F71BE00A9D607 /* main.m */; };
 		2733212C208F71F900A9D607 /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2733212B208F71F900A9D607 /* Todo.m */; };
 		2733212F208F758A00A9D607 /* TodoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2733212E208F758A00A9D607 /* TodoTableViewCell.m */; };
+		27332132208F828700A9D607 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27332131208F828700A9D607 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		2733212B208F71F900A9D607 /* Todo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Todo.m; sourceTree = "<group>"; };
 		2733212D208F758A00A9D607 /* TodoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodoTableViewCell.h; sourceTree = "<group>"; };
 		2733212E208F758A00A9D607 /* TodoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoTableViewCell.m; sourceTree = "<group>"; };
+		27332130208F828700A9D607 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		27332131208F828700A9D607 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +74,8 @@
 				27332117208F71BE00A9D607 /* ViewController.h */,
 				27332118208F71BE00A9D607 /* ViewController.m */,
 				2733211A208F71BE00A9D607 /* Main.storyboard */,
+				27332130208F828700A9D607 /* DetailViewController.h */,
+				27332131208F828700A9D607 /* DetailViewController.m */,
 				2733212D208F758A00A9D607 /* TodoTableViewCell.h */,
 				2733212E208F758A00A9D607 /* TodoTableViewCell.m */,
 				2733211D208F71BE00A9D607 /* Assets.xcassets */,
@@ -157,6 +162,7 @@
 				2733212F208F758A00A9D607 /* TodoTableViewCell.m in Sources */,
 				27332116208F71BE00A9D607 /* AppDelegate.m in Sources */,
 				2733212C208F71F900A9D607 /* Todo.m in Sources */,
+				27332132208F828700A9D607 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
