@@ -7,22 +7,42 @@
 //
 
 #import "ViewController.h"
+#import "Todo.h"
+#import "TodoTableViewCell.h"
 
 @interface ViewController ()
-
+@property (nonatomic, strong) NSArray* todos;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    // init todos
+    Todo *laundry = [[Todo alloc] initWithTitle:@"Laundry" todoDescription:@"Do towels and Cliff's PJs" priorityNumber:1 andIsCompleted:NO];
+    Todo *groceries = [[Todo alloc] initWithTitle:@"Groceries" todoDescription:@"Book pick up time at Loblaws" priorityNumber:2 andIsCompleted:NO];
+    Todo *readings = [[Todo alloc] initWithTitle:@"Readings" todoDescription:@"Finish Lighthouse Week 3 readings" priorityNumber:2 andIsCompleted:NO];
+    Todo *waiver = [[Todo alloc] initWithTitle:@"Waiver" todoDescription:@"Sign dodgeball waiver" priorityNumber:1 andIsCompleted:NO];
+    Todo *sunglasses = [[Todo alloc] initWithTitle:@"Sunglasses" todoDescription:@"Go buy cool sunglasses" priorityNumber:3 andIsCompleted:NO];
+    
+    // Add to array
+    NSArray *todos = [[NSArray alloc] initWithObjects:laundry, groceries, readings, waiver, sunglasses, nil];
+    self.todos = todos;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.todos count];
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TodoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"todoCell" forIndexPath:indexPath];
+    Todo *todo = [self.todos objectAtIndex:indexPath.row];
+    cell.titleLabel.text = todo.title;
+    cell.todoDesctriptionlabel.text = todo.todoDescription;
+    cell.priorityNumberLabel.text = [NSString stringWithFormat:@"%ld", todo.priorityNumber];
+    return cell;
 }
 
 
