@@ -10,9 +10,13 @@
 #import "Todo.h"
 #import "TodoTableViewCell.h"
 #import "DetailViewController.h"
+#import "MakeTodoViewController.h"
 
-@interface ViewController ()
-@property (nonatomic, strong) NSArray* todos;
+@interface ViewController ()<TodoDelegate>
+@property MakeTodoViewController *makeTodoViewController;
+@property (nonatomic, strong) NSMutableArray* todos;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+//@property (nonatomic, strong) UITableView *tableView;
 @end
 
 @implementation ViewController
@@ -27,8 +31,11 @@
     Todo *sunglasses = [[Todo alloc] initWithTitle:@"Sunglasses" todoDescription:@"Go buy cool sunglasses" priorityNumber:3 andIsCompleted:NO];
     
     // Add to array
-    NSArray *todos = [[NSArray alloc] initWithObjects:laundry, groceries, readings, waiver, sunglasses, nil];
+    NSMutableArray *todos = [[NSMutableArray alloc] initWithObjects:laundry, groceries, readings, waiver, sunglasses, nil];
     self.todos = todos;
+    
+    //delegation
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -52,13 +59,24 @@
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"detailSegue"]) {
     DetailViewController *detail = (DetailViewController*)segue.destinationViewController;
     Todo *todo = (Todo*)sender;
-    detail.todo = todo;
-
-    
-    
+        detail.todo = todo;} else if ([segue.identifier isEqualToString:@"makeTodoSegue"]) {
+            MakeTodoViewController *makeTodoViewController = (MakeTodoViewController*)segue.destinationViewController;
+            makeTodoViewController.delegate = self;
+        }
 }
+- (IBAction)buttonPressed:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"makeTodoSegue" sender:nil];
+}
+
+-(void)makeTodoViewController:(MakeTodoViewController *)viewController addTodo:(Todo *)todo {
+    [self.todos addObject:todo];
+    NSLog(@"%@", self.todos);
+    [self.tableView reloadData];
+}
+
 
 
 @end
